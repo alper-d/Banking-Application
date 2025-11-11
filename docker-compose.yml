@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./bank-backend
+    container_name: backend
+    ports:
+      - "9090:9090"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      - frontend
+
+  frontend:
+    build: ./bank-frontend
+    container_name: frontend
+    ports:
+      - "3000:80"
